@@ -1,2 +1,9 @@
 # Default ignored files
 /workspace.xml
+
+# Maven #
+target/
+
+# IDEA #
+.idea/
+*.iml
