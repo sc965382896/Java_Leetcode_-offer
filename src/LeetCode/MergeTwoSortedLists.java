@@ -8,14 +8,7 @@ public class MergeTwoSortedLists {
             return l2;
         if (l2 == null)
             return l1;
-        ListNode pHead = null;
-        if (l1.val < l2.val) {
-            pHead = l1;
-            l1 = l1.next;
-        } else {
-            pHead = l2;
-            l2 = l2.next;
-        }
+        ListNode pHead = new ListNode(0);
         ListNode pNode = pHead;
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
@@ -32,6 +25,6 @@ public class MergeTwoSortedLists {
             pNode.next = l1;
         if (l2 != null)
             pNode.next = l2;
-        return pHead;
+        return pHead.next;
     }
 }

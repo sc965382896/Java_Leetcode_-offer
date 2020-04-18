@@ -138,6 +138,7 @@ public class Sort {
                     swap(data, i, j);
             }
         }
+        // 注意这一点，最后还要把尾部数值放到中间。
         j++;
         swap(data, j, end);
         return j;
@@ -145,17 +146,20 @@ public class Sort {
     public int partition2(int[] data, int start, int end) {
         int i = start;
         int j = end;
+        // 双指针填坑时需要保存尾部的值。
         int temp = data[end];
         while (i < j) {
             while (i < j && data[i] < temp)
                 i++;
             if (i < j)
-                data[i++] = data[j];
+                // 注意这种地方是将违规的数据填到坑里。
+                data[j--] = data[i];
             while (i < j && data[j] >= temp)
                 j--;
             if (i < j)
-                data[j--] = data[i];
+                data[i++] = data[j];
         }
+        // 最后需要填充该位置。
         data[i] = temp;
         return i;
     }
@@ -167,7 +171,7 @@ public class Sort {
     public static void main(String[] args) {
         Sort sort = new Sort();
         int[] list1 = {6, 2, 1, 5, 7, 2};
-        sort.sort5(list1);
+        sort.sort4(list1);
         for (int value : list1) {
             System.out.println(value);
         }
