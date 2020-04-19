@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 // 合并区间
-// 先排序，然后合并。合并的原则：如果前一个区间包含后一个区间，则跳过。如果前一个区间与后一个区间交叉，则合并。如果都不，存储前一区间，并从当前区间开始进行合并。
+// 先根据左边界排序，然后合并。合并的原则：如果前一个区间包含后一个区间，则跳过。如果前一个区间与后一个区间交叉，则合并。
+// 如果都不，存储前一区间，并从当前区间开始进行合并。
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
         if (intervals == null || intervals.length <= 1)
@@ -13,15 +14,16 @@ public class MergeIntervals {
         List<int[]> res = new ArrayList<>();
         quickSort(intervals);
         int[] temp = intervals[0];
-        for (int i = 0; i < intervals.length; i++) {
+        // 使用for-loop遍历更加简洁，可读性更高
+        for (int[] interval : intervals) {
             // 这里需要注意，因为存在包含的可能，需要加一个判断。
-            if (intervals[i][1] <= temp[1])
+            if (interval[1] <= temp[1])
                 continue;
-            if (intervals[i][0] <= temp[1]) {
-                temp[1] = intervals[i][1];
+            if (interval[0] <= temp[1]) {
+                temp[1] = interval[1];
             } else {
                 res.add(temp);
-                temp = intervals[i];
+                temp = interval;
             }
         }
         res.add(temp);
