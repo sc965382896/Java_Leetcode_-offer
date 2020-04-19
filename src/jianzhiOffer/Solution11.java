@@ -1,5 +1,7 @@
 package jianzhiOffer;
 
+// 面试题11：旋转数组的最小数字
+// 利用旋转数组的特点，采用二分查找的方式。
 
 public class Solution11 {
     public int minNumberInRotateArray(int [] array) {

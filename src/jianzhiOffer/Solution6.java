@@ -6,14 +6,6 @@ import java.util.Stack;
 // 面试题6：从尾到头打印链表
 
 public class Solution6 {
-    class ListNode {
-        public int val;
-        public ListNode next = null;
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
-
     // 循环的方法
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         ArrayList<Integer> result = new ArrayList<>();
