@@ -1,9 +1,11 @@
 package LeetCode;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// 朋友圈
+// DFS、BFS：可以修改数组的值，省去visited数组。需要注意的是，不能像并查集那样初始化索引为i+1，因为可能出现0->4->2这种顺序的图。
+// 并查集，可以只合并右上角的部分，减少运算量。
 public class FriendCircles {
     class UnionFind {
         int count;
